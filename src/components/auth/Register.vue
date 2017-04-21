@@ -1,5 +1,19 @@
 <template lang="html">
-  <p>Register</p>
+  <div>
+    <h3 class="text-center">Login</h3>
+
+    <input type="email" class="form-control" placeholder="Email address">
+    <input type="text" class="form-control" placeholder="Username">
+    <input type="password" class="form-control" placeholder="Password">
+
+    <hr>
+
+    <button class="btn btn-lg btn-primary btn-block">Register</button>
+
+    <p class="text-center">
+      Already have an account? <router-link to="/auth/login">Login!</router-link>
+    </p>
+  </div>
 </template>
 
 <script>
