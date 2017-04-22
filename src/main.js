@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import Router from './routes';
 import VueResource from 'vue-resource';
+import AuthPlugin from './plugins/Auth.js';
 
 Vue.config.productionTip = false
 Vue.use(VueResource);
+Vue.use(Auth);
 
 // configure alertify defaults
 alertify.defaults.notifier.position = 'top-right';
@@ -23,6 +25,20 @@ Vue.http.interceptors.push(function(request, next) {
       })
     }
   })
+})
+
+// configure route guards
+Router.beforeEach(function(to, from, next) {
+  // prevent access to 'requiresGuest' routes
+  if (to.matched.some(function(record) { return record.meta.requiresGuest })
+      && Vue.auth.loggedIn())
+  {
+    next({
+      path: '/newsfeed'
+    });
+  } else {
+    next(); // make sure to always call next();
+  }
 })
 
 /* eslint-disable no-new */

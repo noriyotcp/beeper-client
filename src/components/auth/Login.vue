@@ -31,7 +31,8 @@ export default {
     login: function() {
       this.$http.post("/auth", this.user)
         .then(function(res) {
-
+          this.$auth.setToken(res.body.token, Data.now() + 14400000); // + 4 hours
+          this.$router.push('/newsfeed');
         })
     }
   }
