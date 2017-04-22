@@ -8,7 +8,7 @@
 
     <hr>
 
-    <button class="btn btn-lg btn-primary btn-block">Register</button>
+    <button class="btn btn-lg btn-primary btn-block m-b-15">Register</button>
 
     <p class="text-center">
       Already have an account? <router-link to="/auth/login">Login!</router-link>

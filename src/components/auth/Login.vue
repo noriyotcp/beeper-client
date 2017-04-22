@@ -7,7 +7,7 @@
 
     <hr>
 
-    <button class="btn btn-lg btn-primary btn-block">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block m-b-15">Sign in</button>
 
     <p class="text-center">
       Don't have an account? <router-link to="/auth/register">Sign up!</router-link>
