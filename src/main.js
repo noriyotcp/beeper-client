@@ -8,7 +8,7 @@ import AuthPlugin from './plugins/Auth.js';
 
 Vue.config.productionTip = false
 Vue.use(VueResource);
-Vue.use(Auth);
+Vue.use(AuthPlugin);
 
 // configure alertify defaults
 alertify.defaults.notifier.position = 'top-right';
