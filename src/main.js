@@ -11,6 +11,20 @@ Vue.use(VueResource);
 // configure alertify defaults
 alertify.defaults.notifier.position = 'top-right';
 
+Vue.http.interceptors.push(function(request, next) {
+  if (request.url[0] === '/') {
+    request.url = process.env.API + request.url
+  }
+
+  next(function(response) {
+    if (response.status == 422) {
+      response.body.errors.forEach(function(e) {
+        alertify.error(e);
+      })
+    }
+  })
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
