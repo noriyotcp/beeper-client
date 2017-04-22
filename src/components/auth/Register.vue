@@ -31,7 +31,18 @@ export default {
   },
   methods: {
     register: function() {
-      console.log(this.user);
+      this.$http.post("http://localhost:9090/users", this.user)
+                .then(function(res) {
+                  alertify.success("Success! You can now login with your email and password");
+                  this.$router.push('/auth/login');
+                })
+                .catch(function(res){
+                  if (res.status == 422) {
+                    res.body.errors.forEach(function(e) {
+                      alertify.error(e);
+                    })
+                  }
+                })
     }
   }
 }
