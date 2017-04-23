@@ -17,19 +17,30 @@
     },
     created: function() {
       this.beeps = [];
-      this.getBeeps();
+      this.getBeeps(1);
+
+      window.addEventListener('scroll', this.handleScroll);
     },
     data: function() {
       return {
-        beeps: []
+        beeps: [],
+        page: {}
       }
     },
     methods: {
-      getBeeps: function() {
-        this.$http.get('/beeps')
+      getBeeps: function(page) {
+        this.$http.get('/beeps?page=' + page)
             .then(function(res) {
-              this.beeps = res.body.data;
+              this.beeps = this.beeps.concat(res.body.data);
+              this.page  = { current: res.body.current_page, last: res.body.last_page };
             })
+      },
+      handleScroll: function() {
+        if (document.body.scrollHeight - window.innerHeight - document.body.scrollTop == 0) {
+          if (this.page.current < this.page.last) {
+            this.getBeeps(this.page.current + 1);
+          }
+        }
       }
     }
   }
