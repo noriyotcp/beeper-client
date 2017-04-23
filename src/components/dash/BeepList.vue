@@ -38,6 +38,14 @@
         beepsLoading: false
       }
     },
+    watch: {
+      endpoint: function() {
+        // call again the method if the route changes
+        this.beeps = [];
+        this.getBeeps();
+      }
+    },
+
     methods: {
       getBeeps: function(page) {
         this.beepsLoading = true;
