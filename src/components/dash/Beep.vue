@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="beep">
     <div class="row">
-      <div class="col-xs-2 text-center">
+      <div class="col-xs-2 text-center" v-show="showUserInfo">
           <router-link :to="'/profile/'+beep.author.username">
               <img :src="beep.author.avatar" class="img-circle no-margin">
           </router-link>
@@ -36,7 +36,10 @@
 
   export default {
     name: 'beep',
-    props: {beep: {}},
+    props: {
+      beep: {},
+      showUserInfo: { type: Boolean, default: true }
+    },
     methods: {
       likeBeep: function() {
         this.$http.patch('/beeps/' + this.beep.id + '/like')

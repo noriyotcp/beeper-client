@@ -5,7 +5,8 @@
       <h2 class="text-center">@{{user.username}}</h2>
       <hr>
       <p class="text-center m-b-20">{{user.about}}</p>
-      <beeplist :endpoint="'/users/' + $route.params.username + '/beeps'"></beeplist>
+      <beeplist :endpoint="'/users/' + $route.params.username + '/beeps'"
+                :showUserInfo="false"></beeplist>
     </div>
   </div>
 </template>

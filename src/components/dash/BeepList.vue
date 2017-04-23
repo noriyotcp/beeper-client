@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <div id="beepsWrapper">
-      <beep v-for="beep in beeps" :beep="beep" :key="beep.id"></beep>
+      <beep v-for="beep in beeps" :beep="beep" :key="beep.id" :showUserInfo="showUserInfo"></beep>
     </div>
     <div id="beepsLoading" class="text-center" v-show="this.beepsLoading">
       <i class="fa fa-spin fa-spinner"></i>
@@ -28,7 +28,8 @@
       window.removeEventListener('scroll', this.handleScroll);
     },
     props: {
-      endpoint: { type: String, default: "/beeps" }
+      endpoint: { type: String, default: "/beeps" },
+      showUserInfo: { type: Boolean, default: true }
     },
     data: function() {
       return {
