@@ -28,6 +28,10 @@
         user: {}
       }
     },
+    watch: {
+      // call again the method if the route changes
+      $route: 'getUser'
+    },
     methods: {
       getUser: function() {
         this.$http.get('/users/' + this.$route.params.username)
