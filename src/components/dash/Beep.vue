@@ -39,7 +39,16 @@
     props: {beep: {}},
     methods: {
       likeBeep: function() {
-
+        this.$http.patch('/beeps/' + this.beep.id + '/like')
+            .then(function(res) {
+              if (this.beep.liked) {
+                this.beep.likes--;
+                this.beep.liked = false;
+              } else {
+                this.beep.likes++;
+                this.beep.liked = true;
+              }
+            })
       },
       beepDate: function(timestamp) {
         return moment(timestamp*1000).format("DD-MM-YYYY");
