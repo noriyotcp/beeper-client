@@ -6,6 +6,7 @@ import Login from './components/auth/Login.vue';
 import Register from './components/auth/Register.vue';
 import Newsfeed from './components/dash/Newsfeed.vue';
 import Dash from './components/dash/Dash.vue';
+import Profile from './components/dash/Profile.vue';
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,10 @@ let router = new VueRouter({
           path: 'newsfeed',
           component: Newsfeed,
           meta: { requiresAuth: true }
+        },
+        {
+          path: 'profile/:username',
+          component: Profile
         }
       ]
     },
