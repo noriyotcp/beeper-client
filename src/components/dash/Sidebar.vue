@@ -4,10 +4,10 @@
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            <a href="#" class="btn btn-block btn-default"><i class="fa fa-user"></i> Profile</a>
+            <router-link :to="'/profile/' + user.username" class="btn btn-block btn-default"><i class="fa fa-user"></i> Profile</router-link>
         </div>
         <div class="col-sm-6">
-            <a href="#" class="btn btn-block btn-default"><i class="fa fa-newspaper-o"></i> Feed</a>
+            <router-link to="/newsfeed" class="btn btn-block btn-default"><i class="fa fa-newspaper-o"></i> Feed</router-link>
         </div>
     </div>
 
