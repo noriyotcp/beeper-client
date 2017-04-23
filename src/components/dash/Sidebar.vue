@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-sm-6">
           <p class="text-center no-margin">
-            <a href="#"><i class="fa fa-cog"></i> Settings</a>
+            <router-link to="/settings"><i class="fa fa-cog"></i> Settings</router-link>
           </p>
         </div>
         <div class="col-sm-6">
@@ -46,15 +46,16 @@
   export default {
     name: 'sidebar',
     created: function() {
-      if (this.loggedIn) {
-        this.getUser();
-      }
     },
     data: function() {
       return {
-        user: {},
         newBeep: "",
         loggedIn: this.$auth.loggedIn()
+      }
+    },
+    computed: {
+      user: function() {
+        return this.$store.state.currentUser
       }
     },
     methods: {
@@ -62,12 +63,6 @@
         this.$auth.destroyToken();
         this.user = {};
         this.$router.push('/auth/login');
-      },
-      getUser: function() {
-        this.$http.get('/users/me')
-            .then(function(res) {
-              this.user = res.body;
-            });
       }
     }
   }
