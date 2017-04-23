@@ -27,6 +27,9 @@
     destroyed: function() {
       window.removeEventListener('scroll', this.handleScroll);
     },
+    props: {
+      endpoint: { type: String, default: "/beeps" }
+    },
     data: function() {
       return {
         beeps: [],
@@ -37,7 +40,7 @@
     methods: {
       getBeeps: function(page) {
         this.beepsLoading = true;
-        this.$http.get('/beeps?page=' + page)
+        this.$http.get(this.endpoint + '?page=' + page)
             .then(function(res) {
               this.beeps = this.beeps.concat(res.body.data);
               this.page  = { current: res.body.current_page, last: res.body.last_page };
