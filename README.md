@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+Based on this tutorial  
+https://www.udemy.com/learn-by-doing-vue-js-2-the-right-way/learn/v4/overview
+
 ## Build Setup
 
 ``` bash
