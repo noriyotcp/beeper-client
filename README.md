@@ -7,6 +7,8 @@ https://www.udemy.com/learn-by-doing-vue-js-2-the-right-way/learn/v4/overview
 
 ## Build Setup
 
+At first, clone and run [beeper-api](https://github.com/noriyotcp/beeper-api) at localhost.
+
 ``` bash
 # install dependencies
 npm install
